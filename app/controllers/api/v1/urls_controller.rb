@@ -24,7 +24,7 @@ class Api::V1::UrlsController < ApplicationController
   end
 
   def top_100
-    @urls = Url.all
+    @urls = Url.order('times_accessed DESC').limit(100)
     render json: @urls
   end
 
