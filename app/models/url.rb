@@ -15,8 +15,11 @@ class Url < ApplicationRecord
   end
 
   def self.get_entire_url_decoded(short_url)
-      found = self.find_by short_url: short_url
-      found.url
+      url_founded = self.find_by short_url: short_url
+      if !url_founded.nil?
+        url_founded.increment!(:times_accessed)
+      end
+      url_founded
   end
 
   private
