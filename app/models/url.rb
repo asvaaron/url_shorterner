@@ -2,6 +2,7 @@ require 'base62-rb'
 
 class Url < ApplicationRecord
   validates :url, presence: true
+  validates_uniqueness_of :url
 
   after_save :encode_url
 
