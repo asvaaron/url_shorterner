@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+# Create initial values for the url data
+# Add google web page
+Url.create(
+    url:'http://google.com',
+)
+# Add github
+
+Url.create(
+    url:'http://github.com',
+    )
+## Add
