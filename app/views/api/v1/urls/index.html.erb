@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="page-header">
+    <h1>Urls</h1>
+  </div>
+</div><div class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Urls</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @urls.each do |url| %>
+      <tr>
+        <td><%= url.title %></td>
+        <td><%= url.url %></td>
+        <td> --- </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
