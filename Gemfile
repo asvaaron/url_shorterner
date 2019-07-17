@@ -34,6 +34,8 @@ gem 'base62-rb'
 
 # Add Bootstrap
 gem 'bootstrap-sass'
+# URL Validator
+gem 'validate_url', '~> 1.0', '>= 1.0.8'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
