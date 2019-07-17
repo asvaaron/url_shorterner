@@ -44,10 +44,14 @@ class Api::V1::UrlsController < ApplicationController
     @url = Url.new(url_params)
     respond_to do |format|
       if @url.save
-        format.html { redirect_to @url, notice: 'Url was successfully created.' }
-        format.json { render :show, status: :created, location: @url }
+        #format.html { redirect_to @url, notice: 'Url was successfully created.' }
+        format.json { render json: {
+            short_url: "#{request.protocol}#{request.host_with_port}/#{@url.short_url}",
+            status: :created,
+            location: @url }
+        }
       else
-        format.html { render :new }
+        # format.html { render :new }
         format.json { render json: @url.errors, status: :unprocessable_entity }
       end
     end
