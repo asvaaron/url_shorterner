@@ -1,24 +1,73 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README documents the most important aspects
+of the url_shorterner app.
 
-Things you may want to cover:
+# Ruby and Rails versions
 
-* Ruby version
+For this project we are using 
 
-* System dependencies
+| Ruby      | Rails      | 
+|:--------: |:---------: |
+|2.6.3p62   |  6.0.0.rc1 |
 
-* Configuration
+# Development Environment
 
-* Database creation
+Install bundler 
 
-* Database initialization
+```bash
+gem install bundler
 
-* How to run the test suite
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Then install all the gem dependencies provides in the
+**Gemfile** using the following commands
 
-* Deployment instructions
+```bash
+bundle install
+```
 
-* ...
+# Database creation
+Using Rails create all the databases migrations
+
+
+```bash
+rails db:setup
+rails db:migrate
+```
+
+
+# Database initialization
+
+Use seed.rb file for inserting initial values into the database
+
+```bash
+rails db:seed
+
+```
+
+# Services (job queues, cache servers, search engines, etc.)
+
+Resque Scheduler job 
+
+Using rails console queue sleeper
+```ruby
+Resque.enqueue(Sleeper)
+```
+
+```bash
+rake resque:scheduler
+```
+# Deployment instructions (Heroku probably)
+
+
+Create respective databases for production database
+
+```bash
+rails db:create db:migrate RAILS_ENV=production
+```
+Set production database credentials
+in the config/database.yml 
+
+
+
