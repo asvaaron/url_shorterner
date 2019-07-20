@@ -8,8 +8,17 @@ class Url < ApplicationRecord
 
   after_save :encode_url
 
-  def self.fetch_web_page_title(url_string)
-      return Nokogiri::HTML::Document.parse(HTTParty.get(url_string).body).title
+  def self.fetch_web_page_title(id)
+    begin
+      url_change = self.find(id)
+      puts url_change.url
+      title_tag = Nokogiri::HTML::Document.parse(HTTParty.get(url_change.url).body).title
+      url_change.title = title_tag
+      url_change.save
+    rescue
+        # Todo change for log
+        Rails.logger.error p 'Error fetching url '
+    end
   end
   # Get top urls ordered by most times_accessed
   def self.get_top(top_limit)
