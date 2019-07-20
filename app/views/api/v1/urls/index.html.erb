@@ -3,20 +3,28 @@
     <h1>Urls</h1>
   </div>
 </div><div class="container">
-  <table class="table table-striped">
+  <table class="table table-striped table-hover">
     <thead>
     <tr>
       <th>Title</th>
       <th>Urls</th>
-      <th>Actions</th>
+      <th>Short Url</th>
+      <th>Times Accesed</th>
     </tr>
     </thead>
     <tbody>
     <% @urls.each do |url| %>
       <tr>
         <td><%= url.title %></td>
-        <td><%= url.url %></td>
-        <td> --- </td>
+        <td><%= link_to url.url,
+                        url.url %>
+        </td>
+        <td><%= link_to "#{request.protocol}#{request.host_with_port}/#{url.short_url}",
+                        "#{request.protocol}#{request.host_with_port}/#{url.short_url}" %>
+        </td>
+        <td>
+          <span class="badge badge-secondary"><%= url.times_accessed %> </span>
+        </td>
       </tr>
     <% end %>
     </tbody>
