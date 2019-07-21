@@ -93,7 +93,7 @@ rake rswag:specs:swaggerize
 In this project the Short Code algorithm applies a base64
 encoding in the unique primary key **id** Base10 (decimal) value generated 
 for the new url entity. The application rails model validates that the url string 
-is not repeated and not null, this prevents coalitions between urls.
+is not repeated and not null, this prevents coalitions and duplicates urls.
 
 The base64 encode uses characters that goes from [0-9a-zA-Z].
 It's important to mention that when using the Base62 function 
