@@ -4,7 +4,7 @@ class Api::V1::UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
-    @urls = Url.all
+    @urls = Url.get_top(200)
     # render json: @urls
   end
 
@@ -45,7 +45,8 @@ class Api::V1::UrlsController < ApplicationController
     respond_to do |format|
       if @url.save
             #format.html { redirect_to @url, notice: 'Url was successfully created.' }
-            format.json { render json: {
+        FetchUrlWorker.perform_async(@url.id)
+        format.json { render json: {
                 short_url: "#{request.protocol}#{request.host_with_port}/#{@url.short_url}",
                 status: :created,
                 location: @url }
