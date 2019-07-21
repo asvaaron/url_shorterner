@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   mount Sidekiq::Web => 'api/sidekiq'
   get 'api/v1/top' , to: "api/v1/urls#top_100"
-  get 'api/v1/urls' , to: "api/v1/urls#index"
+  get '/' , to: "api/v1/urls#index"
   post '/url' , to: "api/v1/urls#create"
   get '/:word', to: "api/v1/urls#decode_url"
 
