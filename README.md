@@ -92,26 +92,42 @@ rake rswag:specs:swaggerize
 # URL short code Algorithm
 
 In this project the Short Code algorithm applies a base64
-encoding in the unique primary key **id** Base10 (decimal) value generated 
-for the new url entity. The application rails model validates that the url string 
+encoding to the unique primary key **id** Base10 (decimal) value generated 
+for the new url entity. The rails application model validates that the url string 
 is not repeated and not null, this prevents coalitions and duplicates urls.
 
-The base64 encode uses characters that goes from [0-9a-zA-Z].
+The base64 encode uses all [0-9a-zA-Z] characters.
 It's important to mention that when using the Base62 function 
 the encoding must be case insensitive. 
 Otherwise, you won’t be able to differentiate “ABC” from “ABc”.
 
 
+# Routes:
+
+| Route        | Description                                                                |
+|--------------|----------------------------------------------------------------------------|
+| /api-docs    |  Show Swagger documentation for all the api/v1/ endpoints                   |
+| /api/sidekiq | Show the Sidekiq monitor dashboard                                         |
+| /            | Show a basic table with the top ten urls stored ordered by times accessed  |
+| /:short_url  | Decode short url and redirects to the original url                         |
+
 # Deployment instructions (Heroku probably)
 
 
-Create respective databases for production database
+Download heroku client in your local machine
+and login to heroku using the following command
 
 ```bash
-rails db:create db:migrate RAILS_ENV=production
+heroku login
 ```
-Set production database credentials
-in the config/database.yml 
+
+Deploy code to heroku
+```bash
+heroku create
+git push heroku master
+heroku run rails db:migrate
+heroku run rails db:seed
+```
 
 
 
