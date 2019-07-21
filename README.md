@@ -27,7 +27,7 @@ Then install all the gem dependencies provides in the
 bundle install
 ```
 
-# Database creation
+## Database creation
 Using Rails create all the databases migrations
 
 
@@ -37,16 +37,17 @@ rails db:migrate
 ```
 
 
-# Database initialization
+## Database initialization
 
 Use seed.rb file for inserting initial values into the database
 
 ```bash
 rails db:seed
-
 ```
 
-# Services (job queues, cache servers, search engines, etc.)
+## Services (job queues, cache servers, search engines, etc.)
+
+### Job Scheduling
 
 Resque Scheduler job 
 
@@ -73,7 +74,7 @@ bundle exec sidekiq -d -L log/sidekiq.log -e <evironment>
 ```
 
 
-## Swagger documentation 
+### Swagger documentation 
 
 ```bash 
 rails generate rspec:install
@@ -99,8 +100,6 @@ The base64 encode uses characters that goes from [0-9a-zA-Z].
 It's important to mention that when using the Base62 function 
 the encoding must be case insensitive. 
 Otherwise, you won’t be able to differentiate “ABC” from “ABc”.
-
-
 
 
 # Deployment instructions (Heroku probably)
