@@ -23,10 +23,15 @@ gem 'httparty', '~> 0.17.0'
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-# Resque scheduler
+# Resque scheduler and sidekiq
 gem 'resque'
 gem 'resque-scheduler'
-
+# Add Sidekiq configuration
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
+# Swagger documentation
+gem 'rswag'
+gem 'rspec-rails'
 # Use base62 encoder
 gem 'base62-rb'
 # Use Active Storage variant
@@ -36,6 +41,7 @@ gem 'base62-rb'
 gem 'bootstrap-sass'
 # URL Validator
 gem 'validate_url', '~> 1.0', '>= 1.0.8'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
