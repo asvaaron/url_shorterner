@@ -58,6 +58,51 @@ Resque.enqueue(Sleeper)
 ```bash
 rake resque:scheduler
 ```
+
+Create a new Work using sidekiq 
+command
+```ruby
+rails g sidekiq:worker 
+```
+
+Start sidekick from the root of the rails application
+so the jobs will be processed
+
+```bash
+bundle exec sidekiq -d -L log/sidekiq.log -e <evironment>
+```
+
+
+## Swagger documentation 
+
+```bash 
+rails generate rspec:install
+rails g rswag:install
+
+```
+
+Generate swagger api docs json file from spects 
+using the following code
+
+```bash
+rake rswag:specs:swaggerize
+```
+
+# URL short code Algorithm
+
+In this project the Short Code algorithm applies a base64
+encoding in the unique primary key **id** Base10 (decimal) value generated 
+for the new url entity. The application rails model validates that the url string 
+is not repeated and not null, this prevents coalitions between urls.
+
+The base64 encode uses characters that goes from [0-9a-zA-Z].
+It's important to mention that when using the Base62 function 
+the encoding must be case insensitive. 
+Otherwise, you won’t be able to differentiate “ABC” from “ABc”.
+
+
+
+
 # Deployment instructions (Heroku probably)
 
 
