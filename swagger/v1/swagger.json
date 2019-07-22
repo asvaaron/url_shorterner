@@ -79,7 +79,7 @@
               "type": "object",
               "properties": {
                 "url": {
-                  "type": "error"
+                  "type": "string"
                 }
               }
             }
@@ -106,13 +106,22 @@
                 "id": {
                   "type": "integer"
                 },
-                "name": {
+                "title": {
                   "type": "string"
                 },
-                "photo_url": {
+                "url": {
                   "type": "string"
                 },
-                "status": {
+                "short_url": {
+                  "type": "string"
+                },
+                "times_accessed": {
+                  "type": "integer"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
                   "type": "string"
                 }
               }

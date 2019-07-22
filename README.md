@@ -111,7 +111,7 @@ Otherwise, you won’t be able to differentiate “ABC” from “ABc”.
 | /            | Show a basic table with the top ten urls stored ordered by times accessed  |
 | /:short_url  | Decode short url and redirects to the original url                         |
 
-# Deployment instructions (Heroku probably)
+# Deployment instructions (Heroku)
 
 
 Download heroku client in your local machine
