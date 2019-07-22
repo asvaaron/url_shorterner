@@ -127,6 +127,7 @@ heroku create
 git push heroku master
 heroku run rails db:migrate
 heroku run rails db:seed
+heroku ps:scale fetchurlworker+1
 ```
 
 
