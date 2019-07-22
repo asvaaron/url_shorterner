@@ -4,7 +4,7 @@ class Api::V1::UrlsController < ApplicationController
   # GET /urls
   # GET /urls.json
   def index
-    @urls = Url.get_top(200)
+    @urls = Url.get_top(25)
     # render json: @urls
   end
 
