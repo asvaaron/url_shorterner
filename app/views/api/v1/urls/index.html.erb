@@ -22,8 +22,8 @@
         <td><%= link_to "#{request.protocol}#{request.host_with_port}/#{url.short_url}",
                         "#{request.protocol}#{request.host_with_port}/#{url.short_url}" %>
         </td>
-        <td>
-          <span class="badge badge-secondary"><%= url.times_accessed %> </span>
+        <td class="text-center">
+          <span class="badge badge-primary"><%= url.times_accessed %> </span>
         </td>
       </tr>
     <% end %>
