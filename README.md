@@ -45,6 +45,12 @@ Use seed.rb file for inserting initial values into the database
 rails db:seed
 ```
 
+Use annotate tool for generating Model table schema. Run this command 
+in the project's root
+
+```bash
+annotate
+```
 ## Services (job queues, cache servers, search engines, etc.)
 
 ### Job Scheduling
@@ -96,7 +102,7 @@ encoding to the unique primary key **id** Base10 (decimal) value generated
 for the new url entity. The rails application model validates that the url string 
 is not repeated and not null, this prevents coalitions and duplicates urls.
 
-The base64 encode uses all [0-9a-zA-Z] characters.
+The base62 encode uses all [0-9a-zA-Z] characters.
 It's important to mention that when using the Base62 function 
 the encoding must be case insensitive. 
 Otherwise, you won’t be able to differentiate “ABC” from “ABc”.

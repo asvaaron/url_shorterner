@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: urls
+#
+#  id             :bigint           not null, primary key
+#  title          :string(500)
+#  url            :text
+#  short_url      :string(350)
+#  times_accessed :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class Url < ApplicationRecord
   include BaseEncoders
   # Validations for url attribute not null, unique and valid url
