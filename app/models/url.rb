@@ -1,6 +1,5 @@
-require 'base62-rb'
-
 class Url < ApplicationRecord
+  include BaseEncoders
   # Validations for url attribute not null, unique and valid url
   validates :url, presence: true
   validates_uniqueness_of :url
@@ -16,7 +15,6 @@ class Url < ApplicationRecord
       url_change.title = title_tag
       url_change.save
     rescue
-        # Todo change for log
         Rails.logger.error p 'Error fetching url '
     end
   end
@@ -27,7 +25,9 @@ class Url < ApplicationRecord
 
   def self.get_entire_url_decoded(short_url)
       # Get entire url using the short_url stored
-      url_founded = self.find_by short_url: short_url
+      short_url = BaseEncoders::Base62.new.extract_valid_base_characters(short_url)
+      id = BaseEncoders::Base62.new.decode_from_base(short_url, 62)
+      url_founded = self.find_by id: id
       if !url_founded.nil?
         url_founded.increment!(:times_accessed)
       end
@@ -40,7 +40,7 @@ class Url < ApplicationRecord
     # Encode id using a base62 encoder valid values [0-9a-zA-Z]
     # Initialize times accessed to 0
     self.update_columns(
-        short_url: Base62.encode(self.id),
+        short_url: BaseEncoders::Base62.new.encode_to_base(self.id, 62),
         times_accessed: 0
     )
     true

@@ -32,8 +32,6 @@ gem 'sidekiq-scheduler'
 # Swagger documentation
 gem 'rswag'
 gem 'rspec-rails'
-# Use base62 encoder
-gem 'base62-rb'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
